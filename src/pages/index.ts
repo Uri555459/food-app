@@ -1,0 +1,7 @@
+export { WelcomePage } from './WelcomePage/WelcomePage'
+export { LoginPage } from './LoginPage/LoginPage'
+export { RegisterPage } from './RegisterPage/RegisterPage'
+export { CategoriesPage } from './CategoriesPage/CategoriesPage'
+export { CategoryPage } from './CategoryPage/CategoryPage'
+export { BasketPage } from './BasketPage/BasketPage'
+export { ProfilePage } from './ProfilePage/ProfilePage'
