@@ -20,12 +20,10 @@
 
 		&:focus {
 			border: 1px solid var(--accent-color);
-		}
-	}
 
-	svg {
-		position: absolute;
-		top: 9px;
-		left: 46px;
+			&::placeholder {
+				opacity: 0;
+			}
+		}
 	}
 }

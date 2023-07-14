@@ -1,5 +1,4 @@
-import { ChangeEvent, FC, useState } from 'react'
-import { useForm, SubmitHandler, FieldValues } from 'react-hook-form'
+import { FC } from 'react'
 
 import { Button, LayoutDetails, Typography } from '../../components'
 
@@ -7,33 +6,14 @@ import { selectUser } from '../../redux/user/userSlice'
 import { useAppSelector } from '../../hooks/store.hooks'
 
 import styles from './ProfilePage.module.scss'
+import { MESSAGES } from '../../constants/messages.constants'
+import { useProfile } from './useProfile'
 
 export const ProfilePage: FC = () => {
-	const [newEmail, setNewEmail] = useState<string>('')
-	const [newAddress, setNewAddress] = useState<string>('')
 	const { fullName, email, address } = useAppSelector(selectUser)
 
-	const {
-		register,
-		handleSubmit,
-		formState: { errors },
-	} = useForm()
-
-	const onSubmit: SubmitHandler<FieldValues> = async data => {
-		console.log(data)
-	}
-
-	const changeHandler = (event: ChangeEvent) => {
-		const target = event.target as HTMLFormElement
-
-		if (target.name === 'email') {
-			setNewEmail(target.value)
-		}
-
-		if (target.name === 'address') {
-			setNewAddress(target.value)
-		}
-	}
+	const { register, handleSubmit, errors, changeHandler, onSubmit } =
+		useProfile()
 
 	return (
 		<div className={styles.profilePage}>
@@ -49,11 +29,29 @@ export const ProfilePage: FC = () => {
 					<div className={styles.inputWrap}>
 						<input
 							className={styles.input}
-							{...register('email', { required: '' })}
+							{...register('fullName', {
+								required: MESSAGES.fullNameIsRequired,
+							})}
+							name='fullName'
+							placeholder='Full Name'
+							type='text'
+							defaultValue={fullName}
+							onChange={changeHandler}
+						/>
+						{errors.email ? (
+							<Typography tag='span' size='xs' className={styles.error}>
+								<>{errors.email.message}</>
+							</Typography>
+						) : null}
+					</div>
+					<div className={styles.inputWrap}>
+						<input
+							className={styles.input}
+							{...register('email', { required: MESSAGES.emailIsRequired })}
 							name='email'
 							placeholder='Email'
 							type='email'
-							value={newEmail ? newEmail : email}
+							defaultValue={email}
 							onChange={changeHandler}
 						/>
 						{errors.email ? (
@@ -65,18 +63,16 @@ export const ProfilePage: FC = () => {
 					<div className={styles.inputWrap}>
 						<textarea
 							className={styles.input}
-							{...register('address', { required: '' })}
+							{...register('address', { required: MESSAGES.addressIsRequired })}
 							name='address'
-							placeholder='Address'
-							value={newAddress ? newAddress : address}
+							placeholder='Delivery address'
 							onChange={changeHandler}
 							rows={5}
-						>
-							{address ? address : null}
-						</textarea>
-						{errors.email ? (
+							defaultValue={address}
+						></textarea>
+						{errors.address ? (
 							<Typography tag='span' size='xs' className={styles.error}>
-								<>{errors.email.message}</>
+								<>{errors.address.message}</>
 							</Typography>
 						) : null}
 					</div>

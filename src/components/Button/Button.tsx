@@ -11,6 +11,7 @@ interface Props extends IClassName {
 	backgroundColor?: string
 	type?: 'link' | 'button'
 	path?: string
+	disabled?: boolean
 }
 
 export const Button: FC<Props> = ({
@@ -19,6 +20,7 @@ export const Button: FC<Props> = ({
 	className,
 	type = 'button',
 	path = '',
+	disabled = false,
 	...props
 }) => {
 	switch (type) {
@@ -33,6 +35,7 @@ export const Button: FC<Props> = ({
 				<button
 					className={cn(styles.button, className)}
 					onClick={onClick}
+					disabled={disabled}
 					{...props}
 				>
 					{children}

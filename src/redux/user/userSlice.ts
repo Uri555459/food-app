@@ -1,7 +1,9 @@
 import { createSlice } from '@reduxjs/toolkit'
+import type { PayloadAction } from '@reduxjs/toolkit'
+import { FieldValues } from 'react-hook-form'
+
 import { RootState } from '../../store'
 
-import type { PayloadAction } from '@reduxjs/toolkit'
 import { IProduct } from '../../types/global.types'
 
 export interface State {
@@ -34,6 +36,13 @@ export const userSlice = createSlice({
 			state.fullName = action.payload.fullName
 			state.accessToken = action.payload.accessToken
 		},
+
+		updateUser: (state, action: PayloadAction<FieldValues>) => {
+			state.fullName = action.payload.fullName
+			state.email = action.payload.email
+			state.address = action.payload.address
+		},
+
 		logOut: state => {
 			state.email = ''
 			state.fullName = ''
@@ -42,7 +51,7 @@ export const userSlice = createSlice({
 	},
 })
 
-export const { addUser, logOut } = userSlice.actions
+export const { addUser, updateUser, logOut } = userSlice.actions
 
 export const userReducer = userSlice.reducer
 

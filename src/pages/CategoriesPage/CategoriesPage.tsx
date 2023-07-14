@@ -1,10 +1,12 @@
 import { FC, useEffect, useState } from 'react'
 
 import { BackToTop, CategoryCard, PageInfo } from '../../components'
+
 import { ICategory } from '../../types/global.types'
 
-import styles from './CategoriesPage.module.scss'
 import { productApi } from '../../api/product/product.api'
+
+import styles from './CategoriesPage.module.scss'
 
 export const CategoriesPage: FC = () => {
 	const [categories, setCategories] = useState<ICategory[]>([])

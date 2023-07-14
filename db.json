@@ -3,8 +3,9 @@
     {
       "email": "test@test.ru",
       "password": "$2a$10$OLaz.eco1cVv6AKTgpswguo2kRqA6rxOyCoygtHvaCXVqBXDZ0RQG",
-      "fullName": "Uri Uri",
-      "id": 1
+      "fullName": "Uri Uri ",
+      "id": 1,
+      "address": "Moscow"
     }
   ],
   "products": [

@@ -1,3 +1,11 @@
+export interface IUser {
+	id: number
+	email: string
+	password?: string
+	fullName: string
+	address?: string
+}
+
 interface IBaseProduct {
 	id: number
 	title: string
