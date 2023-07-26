@@ -35,4 +35,26 @@ export const productApi = {
 		})
 		return await res.json()
 	},
+
+	async addedToFavorites(id: number) {
+		const res = await fetch(`${API_CONSTANTS.BASE_URL}/products/${id}`, {
+			method: 'PATCH',
+			headers: {
+				'Content-Type': 'application/json',
+			},
+			body: JSON.stringify({ isFavorites: true }),
+		})
+		return await res.json()
+	},
+
+	async removeToFavorites(id: number) {
+		const res = await fetch(`${API_CONSTANTS.BASE_URL}/products/${id}`, {
+			method: 'PATCH',
+			headers: {
+				'Content-Type': 'application/json',
+			},
+			body: JSON.stringify({ isFavorites: false }),
+		})
+		return await res.json()
+	},
 }

@@ -1,9 +1,10 @@
 import { Route, Routes } from 'react-router-dom'
+
 import { privateRoutes, publicRoutes } from './routes/routes'
 
 import { LayoutDefault, PrivateRoutes } from './components'
 
-function App() {
+export const App = () => {
 	return (
 		<div className='wrapper'>
 			<LayoutDefault>
@@ -25,5 +26,3 @@ function App() {
 		</div>
 	)
 }
-
-export default App

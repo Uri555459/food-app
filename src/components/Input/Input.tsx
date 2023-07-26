@@ -39,6 +39,7 @@ export const Input: FC<Props> = ({
 				className={cn(styles.input, className)}
 				type={type}
 				placeholder={placeholder}
+				autoComplete='off'
 				{...register(name, { required: message })}
 				{...props}
 			/>

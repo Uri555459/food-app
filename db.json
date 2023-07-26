@@ -3,9 +3,9 @@
     {
       "email": "test@test.ru",
       "password": "$2a$10$OLaz.eco1cVv6AKTgpswguo2kRqA6rxOyCoygtHvaCXVqBXDZ0RQG",
-      "fullName": "Uri Uri ",
+      "fullName": "Uri Test",
       "id": 1,
-      "address": "Moscow"
+      "address": "My address"
     }
   ],
   "products": [
@@ -19,6 +19,7 @@
       "rating": 5,
       "count": 1,
       "added": false,
+      "isFavorites": false,
       "categoryId": 1
     },
     {
@@ -31,6 +32,7 @@
       "rating": 5,
       "count": 1,
       "added": false,
+      "isFavorites": false,
       "categoryId": 1
     },
     {
@@ -43,6 +45,7 @@
       "rating": 3.3,
       "count": 1,
       "added": false,
+      "isFavorites": false,
       "categoryId": 1
     },
     {
@@ -55,6 +58,7 @@
       "rating": 4.3,
       "count": 1,
       "added": false,
+      "isFavorites": false,
       "categoryId": 1
     },
     {
@@ -67,6 +71,7 @@
       "rating": 4.3,
       "count": 1,
       "added": false,
+      "isFavorites": false,
       "categoryId": 2
     },
     {
@@ -79,6 +84,7 @@
       "rating": 3.9,
       "count": 1,
       "added": false,
+      "isFavorites": false,
       "categoryId": 2
     },
     {
@@ -91,6 +97,7 @@
       "rating": 3.9,
       "count": 1,
       "added": false,
+      "isFavorites": false,
       "categoryId": 2
     },
     {
@@ -103,6 +110,7 @@
       "rating": 3.9,
       "count": 1,
       "added": false,
+      "isFavorites": false,
       "categoryId": 2
     }
   ],

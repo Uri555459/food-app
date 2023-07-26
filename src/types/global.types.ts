@@ -28,4 +28,5 @@ export interface IProduct extends IBaseProduct {
 	count: number
 	price: number
 	added: boolean
+	isFavorites: boolean
 }

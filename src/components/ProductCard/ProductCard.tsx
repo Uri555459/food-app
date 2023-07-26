@@ -1,13 +1,14 @@
 import { FC, useState } from 'react'
 
-import { Button, Typography } from '..'
+import { Button, Favorites, Typography } from '..'
 
 import { IProduct } from '../../types/global.types'
 
 import { addToBasket, addedFlagToBasket } from '../../redux/basket/basketSlice'
 
-import styles from './ProductCard.module.scss'
 import { useAppDispatch } from '../../hooks/store.hooks'
+
+import styles from './ProductCard.module.scss'
 
 interface Props {
 	product: IProduct
@@ -27,6 +28,7 @@ export const ProductCard: FC<Props> = ({ product }) => {
 
 	return (
 		<li className={styles.productCardWrap}>
+			<Favorites product={product} />
 			<div className={styles.productCard}>
 				<div className={styles.productCardImageWrap}>
 					<img src={product.imageUrl} alt={product.title} />

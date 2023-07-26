@@ -7,6 +7,7 @@ import {
 	BasketPage,
 	CategoriesPage,
 	CategoryPage,
+	FavoritesPage,
 	LoginPage,
 	ProfilePage,
 	RegisterPage,
@@ -50,6 +51,11 @@ export const privateRoutes: Routes[] = [
 		path: '/profile',
 		element: <ProfilePage />,
 	},
+
+	{
+		path: '/favorites',
+		element: <FavoritesPage />,
+	},
 ]
 
 type MenuRoute = {
@@ -63,7 +69,7 @@ export const menuRoutes: MenuRoute[] = [
 		label: 'Profile',
 	},
 	{
-		path: '/wishlist',
+		path: '/favorites',
 		element: <AiOutlineHeart color='#fff' size='1.8rem' />,
 		label: 'Wishlist',
 	},

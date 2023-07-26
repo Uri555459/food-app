@@ -2,18 +2,21 @@ import { FC, useEffect } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { useForm, SubmitHandler, FieldValues } from 'react-hook-form'
 import { toast } from 'react-toastify'
+import { useTranslation } from 'react-i18next'
 import { MdOutlineKeyboardArrowUp } from 'react-icons/md'
 
 import { Button, Input, Logo, Social, Typography } from '../../components'
 
 import { addUser, selectUser } from '../../redux/user/userSlice'
 
-import styles from './LoginPage.module.scss'
 import { useAppDispatch, useAppSelector } from '../../hooks/store.hooks'
 import { authApi } from '../../api/auth/auth.api'
 import { MESSAGES } from '../../constants/messages.constants'
 
+import styles from './LoginPage.module.scss'
+
 export const LoginPage: FC = () => {
+	const { t } = useTranslation('auth')
 	const dispatch = useAppDispatch()
 	const navigate = useNavigate()
 	const { accessToken } = useAppSelector(selectUser)
@@ -60,14 +63,14 @@ export const LoginPage: FC = () => {
 
 				<Link to='#'>
 					<Typography tag='span' size='xs'>
-						Forgot Password?
+						{t('forgotPassword')}
 					</Typography>
 				</Link>
 				<Button type='button' className={styles.loginPageButton}>
-					Eat Away!
+					{t('eatAway')}
 				</Button>
 				<Typography tag='span' size='xs'>
-					Sign in with
+					{t('signInWith')}
 				</Typography>
 				<Social />
 			</form>
@@ -77,7 +80,7 @@ export const LoginPage: FC = () => {
 				path='/register'
 			>
 				<MdOutlineKeyboardArrowUp size='2rem' />
-				Sign Up
+				{t('signUp')}
 			</Button>
 		</div>
 	)

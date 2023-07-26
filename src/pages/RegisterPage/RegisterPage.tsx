@@ -2,6 +2,7 @@ import { FC, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useForm, SubmitHandler, FieldValues } from 'react-hook-form'
 import { toast } from 'react-toastify'
+import { useTranslation } from 'react-i18next'
 import { MdOutlineKeyboardArrowUp } from 'react-icons/md'
 
 import { Button, Input, Logo, Social, Typography } from '../../components'
@@ -15,6 +16,7 @@ import { MESSAGES } from '../../constants/messages.constants'
 import styles from './RegisterPage.module.scss'
 
 export const RegisterPage: FC = () => {
+	const { t } = useTranslation('auth')
 	const dispatch = useAppDispatch()
 	const { accessToken } = useAppSelector(selectUser)
 	const navigate = useNavigate()
@@ -76,10 +78,10 @@ export const RegisterPage: FC = () => {
 					error={errors.confirmPassword?.message}
 				/> */}
 				<Button className={styles.registerPageButton}>
-					Never Hungry Again!
+					{t('neverHungryAgain')}
 				</Button>
 				<Typography tag='span' size='xs'>
-					or Sign Up with
+					{t('orSignUpWith')}
 				</Typography>
 				<Social />
 			</form>
@@ -89,7 +91,7 @@ export const RegisterPage: FC = () => {
 				path='/login'
 			>
 				<MdOutlineKeyboardArrowUp size='2rem' />
-				Sign In
+				{t('signIn')}
 			</Button>
 		</div>
 	)

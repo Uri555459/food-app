@@ -1,16 +1,21 @@
-import { FC } from 'react'
+import { FC, useState } from 'react'
 import { Link } from 'react-router-dom'
 import cn from 'clsx'
+import { changeLanguage } from 'i18next'
 import { SlLogout } from 'react-icons/sl'
 
 import { Typography } from '..'
+import { Select } from '..'
 
 import { logOut, selectUser } from '../../redux/user/userSlice'
 
 import { menuRoutes } from '../../routes/routes'
 
-import styles from './Menu.module.scss'
+import { Option } from '../Select/SelectItem/SelectItem'
+
 import { useAppDispatch, useAppSelector } from '../../hooks/store.hooks'
+
+import styles from './Menu.module.scss'
 
 interface Props {
 	isShow: boolean
@@ -19,6 +24,20 @@ interface Props {
 export const Menu: FC<Props> = ({ isShow }) => {
 	const dispatch = useAppDispatch()
 	const fullName = useAppSelector(selectUser).fullName
+	const [month, setMonthValue] = useState('')
+	const handleMonthSelect = (value: string) => {
+		setMonthValue(value)
+		changeLanguage(value)
+	}
+
+	const options: Option[] = [
+		{ value: 'en', label: 'En' },
+		{ value: 'ru', label: 'Ru' },
+	]
+
+	const selectedMonth = options.find(item => item.value === month)
+
+	const lng = (localStorage.getItem('i18nextLng') || 'en').toUpperCase()
 
 	const logoutHandler = () => {
 		dispatch(logOut())
@@ -49,6 +68,14 @@ export const Menu: FC<Props> = ({ isShow }) => {
 					<SlLogout color='#fff' size='1.8rem' />
 					<span className={styles.menuItemLabel}>Logout</span>
 				</button>
+
+				<Select
+					mode='cells'
+					options={options}
+					selected={selectedMonth || null}
+					onChange={handleMonthSelect}
+					placeholder={lng}
+				/>
 			</nav>
 		</div>
 	)
