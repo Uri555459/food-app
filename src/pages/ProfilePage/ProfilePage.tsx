@@ -9,7 +9,7 @@ import styles from './ProfilePage.module.scss'
 import { MESSAGES } from '../../constants/messages.constants'
 import { useProfile } from './useProfile'
 
-export const ProfilePage: FC = () => {
+const ProfilePage: FC = () => {
 	const { fullName, email, address } = useAppSelector(selectUser)
 
 	const { register, handleSubmit, errors, changeHandler, onSubmit } =
@@ -82,3 +82,5 @@ export const ProfilePage: FC = () => {
 		</div>
 	)
 }
+
+export default ProfilePage

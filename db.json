@@ -5,7 +5,7 @@
       "password": "$2a$10$OLaz.eco1cVv6AKTgpswguo2kRqA6rxOyCoygtHvaCXVqBXDZ0RQG",
       "fullName": "Uri Test",
       "id": 1,
-      "address": "My address"
+      "address": "my"
     }
   ],
   "products": [
@@ -57,7 +57,7 @@
       "peoples": 25,
       "rating": 4.3,
       "count": 1,
-      "added": false,
+      "added": true,
       "isFavorites": false,
       "categoryId": 1
     },

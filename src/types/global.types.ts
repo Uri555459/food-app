@@ -1,9 +1,13 @@
-export interface IUser {
+export interface IBaseUser {
 	id: number
 	email: string
-	password?: string
 	fullName: string
 	address?: string
+	basketProductsIds?: number[] | []
+}
+
+export interface IUser extends IBaseUser {
+	password: string
 }
 
 interface IBaseProduct {

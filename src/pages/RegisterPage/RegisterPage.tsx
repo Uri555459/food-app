@@ -5,7 +5,14 @@ import { toast } from 'react-toastify'
 import { useTranslation } from 'react-i18next'
 import { MdOutlineKeyboardArrowUp } from 'react-icons/md'
 
-import { Button, Input, Logo, Social, Typography } from '../../components'
+import {
+	Button,
+	Header,
+	Input,
+	Logo,
+	Social,
+	Typography,
+} from '../../components'
 
 import { addUser, selectUser } from '../../redux/user/userSlice'
 import { useAppDispatch, useAppSelector } from '../../hooks/store.hooks'
@@ -15,7 +22,7 @@ import { MESSAGES } from '../../constants/messages.constants'
 
 import styles from './RegisterPage.module.scss'
 
-export const RegisterPage: FC = () => {
+const RegisterPage: FC = () => {
 	const { t } = useTranslation('auth')
 	const dispatch = useAppDispatch()
 	const { accessToken } = useAppSelector(selectUser)
@@ -43,6 +50,7 @@ export const RegisterPage: FC = () => {
 
 	return (
 		<div className={styles.registerPage}>
+			<Header />
 			<Logo className={styles.registerPageLogo} />
 			<form onSubmit={handleSubmit(onSubmit)}>
 				<Input
@@ -96,3 +104,5 @@ export const RegisterPage: FC = () => {
 		</div>
 	)
 }
+
+export default RegisterPage

@@ -2,9 +2,8 @@ import { useState, useEffect, useRef } from 'react'
 import type { FC, MouseEventHandler } from 'react'
 import { MdOutlineKeyboardArrowDown } from 'react-icons/md'
 
-import { Option, SelectItem } from './SelectItem/SelectItem'
-
 import styles from './Select.module.scss'
+import { Option, SelectItem } from './SelectItem/SelectItem'
 
 interface SelectProps {
 	selected: Option | null
@@ -71,40 +70,38 @@ export const Select: FC<SelectProps> = props => {
 	}
 
 	return (
-		<div className='select'>
-			<div
-				className={styles.selectWrapper}
-				ref={rootRef}
-				data-is-active={isOpen}
-				data-mode={mode}
-				data-testid='selectWrapper'
-			>
-				<div className={styles.arrow}>
-					<MdOutlineKeyboardArrowDown size={25} />
-				</div>
-				<div
-					className={styles.placeholder}
-					data-status={status}
-					data-selected={!!selected?.value}
-					onClick={handlePlaceHolderClick}
-					role='button'
-					tabIndex={0}
-					ref={placeholderRef}
-				>
-					{selected?.label || placeholder}
-				</div>
-				{isOpen && (
-					<ul className={styles.select} data-testid='selectDropdown'>
-						{options.map(option => (
-							<SelectItem
-								key={option.value}
-								option={option}
-								onClick={handleOptionClick}
-							/>
-						))}
-					</ul>
-				)}
+		<div
+			className={styles.selectWrapper}
+			ref={rootRef}
+			data-is-active={isOpen}
+			data-mode={mode}
+			data-testid='selectWrapper'
+		>
+			<div className={styles.arrow}>
+				<MdOutlineKeyboardArrowDown size={25} />
 			</div>
+			<div
+				className={styles.placeholder}
+				data-status={status}
+				data-selected={!!selected?.value}
+				onClick={handlePlaceHolderClick}
+				role='button'
+				tabIndex={0}
+				ref={placeholderRef}
+			>
+				{selected?.label || placeholder}
+			</div>
+			{isOpen && (
+				<ul className={styles.select} data-testid='selectDropdown'>
+					{options.map(option => (
+						<SelectItem
+							key={option.value}
+							option={option}
+							onClick={handleOptionClick}
+						/>
+					))}
+				</ul>
+			)}
 		</div>
 	)
 }

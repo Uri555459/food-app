@@ -7,7 +7,7 @@ import { useAppSelector } from '../../hooks/store.hooks'
 
 import styles from './BasketPage.module.scss'
 
-export const BasketPage: FC = () => {
+const BasketPage: FC = () => {
 	const products = useAppSelector(selectBasket)
 	const totalPrice = useAppSelector(selectTotalPrice)
 
@@ -66,3 +66,5 @@ export const BasketPage: FC = () => {
 		</div>
 	)
 }
+
+export default BasketPage

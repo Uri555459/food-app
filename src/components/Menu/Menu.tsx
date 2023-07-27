@@ -23,7 +23,8 @@ interface Props {
 
 export const Menu: FC<Props> = ({ isShow }) => {
 	const dispatch = useAppDispatch()
-	const fullName = useAppSelector(selectUser).fullName
+	const { fullName, accessToken } = useAppSelector(selectUser)
+
 	const [month, setMonthValue] = useState('')
 	const handleMonthSelect = (value: string) => {
 		setMonthValue(value)
@@ -35,7 +36,7 @@ export const Menu: FC<Props> = ({ isShow }) => {
 		{ value: 'ru', label: 'Ru' },
 	]
 
-	const selectedMonth = options.find(item => item.value === month)
+	const selected = options.find(item => item.value === month)
 
 	const lng = (localStorage.getItem('i18nextLng') || 'en').toUpperCase()
 
@@ -49,14 +50,19 @@ export const Menu: FC<Props> = ({ isShow }) => {
 				[styles.menuInnerActive]: isShow,
 			})}
 		>
-			<div className={styles.avatar}>
-				<img src='/images/avatar.png' alt='Avatar' />
-			</div>
-			<Typography className={styles.menuUserName} size='sm'>
-				{fullName}
-			</Typography>
+			{accessToken && (
+				<>
+					<div className={styles.avatar}>
+						<img src='/images/avatar.png' alt='Avatar' />
+					</div>
+					<Typography className={styles.menuUserName} size='sm'>
+						{fullName}
+					</Typography>
+				</>
+			)}
 			<nav className={styles.menu}>
-				{menuRoutes.length > 0 &&
+				{accessToken &&
+					menuRoutes.length > 0 &&
 					menuRoutes.map(item => (
 						<Link key={item.label} className={styles.menuItem} to={item.path}>
 							{item.element}
@@ -64,15 +70,17 @@ export const Menu: FC<Props> = ({ isShow }) => {
 						</Link>
 					))}
 
-				<button className={styles.menuItem} onClick={logoutHandler}>
-					<SlLogout color='#fff' size='1.8rem' />
-					<span className={styles.menuItemLabel}>Logout</span>
-				</button>
+				{accessToken && (
+					<button className={styles.menuItem} onClick={logoutHandler}>
+						<SlLogout color='#fff' size='1.8rem' />
+						<span className={styles.menuItemLabel}>Logout</span>
+					</button>
+				)}
 
 				<Select
 					mode='cells'
 					options={options}
-					selected={selectedMonth || null}
+					selected={selected || null}
 					onChange={handleMonthSelect}
 					placeholder={lng}
 				/>

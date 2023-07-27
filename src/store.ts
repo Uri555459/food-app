@@ -14,11 +14,13 @@ import storage from 'redux-persist/lib/storage'
 import { basketReducer } from './redux/basket/basketSlice'
 import { userReducer } from './redux/user/userSlice'
 import { favoritesReducer } from './redux/favorites/favoritesSlice'
+import { searchReducer } from './redux/search/searchSlice'
 
 const rootReducer = combineReducers({
 	basket: basketReducer,
 	user: userReducer,
 	favorites: favoritesReducer,
+	search: searchReducer,
 })
 
 const persistConfig = {

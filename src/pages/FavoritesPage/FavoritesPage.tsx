@@ -1,4 +1,5 @@
 import { FC } from 'react'
+import cn from 'clsx'
 
 import { IProduct } from '../../types/global.types'
 import {
@@ -13,16 +14,16 @@ import { selectFavorites } from '../../redux/favorites/favoritesSlice'
 
 import styles from './FavoritesPage.module.scss'
 
-export const FavoritesPage: FC = () => {
+const FavoritesPage: FC = () => {
 	const favorites = useAppSelector<IProduct[]>(selectFavorites)
 
 	return (
-		<div className={styles.categoryPage}>
+		<div className={styles.favoritesPage}>
 			<PageInfo
 				title='Main Dishes'
 				description='Find the best selling dishes. All meals are prepared fresh.'
 			/>
-			<div className={styles.categoryPageWrap}>
+			<div className={cn(styles.favoritesPageWrap, 'flexCol')}>
 				<div className='inner'>
 					<ProductCardList>
 						{favorites.length > 0 &&
@@ -36,3 +37,5 @@ export const FavoritesPage: FC = () => {
 		</div>
 	)
 }
+
+export default FavoritesPage

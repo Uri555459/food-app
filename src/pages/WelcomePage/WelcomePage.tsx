@@ -2,16 +2,17 @@ import { FC } from 'react'
 import { useTranslation } from 'react-i18next'
 import { FaArrowRight } from 'react-icons/fa'
 
-import { Button, Logo } from '../../components'
+import { Button, Header, Logo } from '../../components'
 import { Typography } from '../../components'
 
 import styles from './WelcomePage.module.scss'
 
-export const WelcomePage: FC = () => {
+const WelcomePage: FC = () => {
 	const { t } = useTranslation('welcome')
 
 	return (
 		<div className={styles.welcomePage}>
+			<Header className='headerTransparent' />
 			<Logo />
 			<div className={styles.welcomePageInner}>
 				<Typography className={styles.welcomePageTitle} tag='h1' size='lg'>
@@ -28,3 +29,5 @@ export const WelcomePage: FC = () => {
 		</div>
 	)
 }
+
+export default WelcomePage

@@ -1,4 +1,5 @@
 import { FC, useEffect, useState } from 'react'
+import cn from 'clsx'
 
 import { BackToTop, CategoryCard, PageInfo } from '../../components'
 
@@ -6,17 +7,28 @@ import { ICategory } from '../../types/global.types'
 
 import { productApi } from '../../api/product/product.api'
 
+import { useAppSelector } from '../../hooks/store.hooks'
+import { selectSearch } from '../../redux/search/searchSlice'
+import { search } from '../../utils/search'
+
 import styles from './CategoriesPage.module.scss'
 
-export const CategoriesPage: FC = () => {
+const CategoriesPage: FC = () => {
 	const [categories, setCategories] = useState<ICategory[]>([])
+	const searchValue = useAppSelector(selectSearch)
 
 	useEffect(() => {
-		productApi.getCategories().then(data => setCategories(data))
-	}, [])
+		if (!searchValue) {
+			productApi.getCategories().then(data => setCategories(data))
+		} else {
+			search(`/categories?title_like=${searchValue}`).then(data =>
+				setCategories(data)
+			)
+		}
+	}, [searchValue])
 
 	return (
-		<div className={styles.categoriesPage}>
+		<div className={cn(styles.categoriesPage, 'flexCol')}>
 			<PageInfo
 				title='Welcome'
 				description='Homemade meals prepared with love. Richest ingredients. '
@@ -31,3 +43,5 @@ export const CategoriesPage: FC = () => {
 		</div>
 	)
 }
+
+export default CategoriesPage

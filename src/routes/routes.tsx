@@ -4,14 +4,14 @@ import { LiaMedalSolid } from 'react-icons/lia'
 import { MdOutlinePayment } from 'react-icons/md'
 
 import {
-	BasketPage,
-	CategoriesPage,
-	CategoryPage,
-	FavoritesPage,
-	LoginPage,
-	ProfilePage,
-	RegisterPage,
-	WelcomePage,
+	BasketPageAsync,
+	CategoriesPageAsync,
+	CategoryPageAsync,
+	FavoritesPageAsync,
+	LoginPageAsync,
+	ProfilePageAsync,
+	RegisterPageAsync,
+	WelcomePageAsync,
 } from '../pages'
 
 type Routes = {
@@ -22,39 +22,39 @@ type Routes = {
 export const publicRoutes: Routes[] = [
 	{
 		path: '/',
-		element: <WelcomePage />,
+		element: <WelcomePageAsync />,
 	},
 	{
 		path: '/login',
-		element: <LoginPage />,
+		element: <LoginPageAsync />,
 	},
 	{
 		path: '/register',
-		element: <RegisterPage />,
+		element: <RegisterPageAsync />,
 	},
 ]
 
 export const privateRoutes: Routes[] = [
 	{
 		path: '/categories',
-		element: <CategoriesPage />,
+		element: <CategoriesPageAsync />,
 	},
 	{
 		path: '/categories/:id',
-		element: <CategoryPage />,
+		element: <CategoryPageAsync />,
 	},
 	{
 		path: '/basket',
-		element: <BasketPage />,
+		element: <BasketPageAsync />,
 	},
 	{
 		path: '/profile',
-		element: <ProfilePage />,
+		element: <ProfilePageAsync />,
 	},
 
 	{
 		path: '/favorites',
-		element: <FavoritesPage />,
+		element: <FavoritesPageAsync />,
 	},
 ]
 

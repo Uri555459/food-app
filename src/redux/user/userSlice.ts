@@ -4,13 +4,9 @@ import { FieldValues } from 'react-hook-form'
 
 import { RootState } from '../../store'
 
-import { IProduct } from '../../types/global.types'
+import { IBaseUser, IProduct } from '../../types/global.types'
 
-export interface State {
-	id: number
-	email: string
-	fullName: string
-	address?: string
+export interface State extends IBaseUser {
 	accessToken: string
 	basket: IProduct[]
 	totalPrice: number
@@ -23,6 +19,7 @@ const initialState: State = {
 	address: '',
 	accessToken: '',
 	basket: [],
+	basketProductsIds: [],
 	totalPrice: 0,
 }
 

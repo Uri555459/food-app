@@ -1,8 +1,8 @@
 import { FC } from 'react'
 
-import styles from './Loader.module.scss'
+import styles from './Spinner.module.scss'
 
-export const Loader: FC = () => {
+export const Spinner: FC = () => {
 	return (
 		<div className={styles['lds-ripple']}>
 			<div></div>

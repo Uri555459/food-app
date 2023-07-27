@@ -5,7 +5,14 @@ import { toast } from 'react-toastify'
 import { useTranslation } from 'react-i18next'
 import { MdOutlineKeyboardArrowUp } from 'react-icons/md'
 
-import { Button, Input, Logo, Social, Typography } from '../../components'
+import {
+	Button,
+	Header,
+	Input,
+	Logo,
+	Social,
+	Typography,
+} from '../../components'
 
 import { addUser, selectUser } from '../../redux/user/userSlice'
 
@@ -15,7 +22,7 @@ import { MESSAGES } from '../../constants/messages.constants'
 
 import styles from './LoginPage.module.scss'
 
-export const LoginPage: FC = () => {
+const LoginPage: FC = () => {
 	const { t } = useTranslation('auth')
 	const dispatch = useAppDispatch()
 	const navigate = useNavigate()
@@ -42,6 +49,7 @@ export const LoginPage: FC = () => {
 
 	return (
 		<div className={styles.loginPage}>
+			<Header />
 			<Logo className={styles.loginPageLogo} />
 			<form onSubmit={handleSubmit(onSubmit)}>
 				<Input
@@ -85,3 +93,5 @@ export const LoginPage: FC = () => {
 		</div>
 	)
 }
+
+export default LoginPage

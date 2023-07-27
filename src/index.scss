@@ -37,10 +37,16 @@ body {
 	overflow-x: hidden;
 }
 
+.flexCol {
+	display: flex;
+	flex-direction: column;
+}
+
 .inner {
 	padding: 25px 25px;
 	background: var(--accent-bg);
 	border-radius: 26px 26px 0 0;
+	flex-grow: 1;
 }
 
 a {
@@ -81,4 +87,8 @@ li {
 
 .select {
 	z-index: 1000;
+}
+
+.headerTransparent {
+	background-color: transparent;
 }
